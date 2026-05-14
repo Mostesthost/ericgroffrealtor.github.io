@@ -6,7 +6,7 @@
     <title>Eric Groff | NavX Realty | Southwest Ohio Real Estate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; }
         .tab-content { display: none; }
@@ -17,13 +17,29 @@
                         url('https://i.postimg.cc/W3Bhycyy/009.jpg') !important; 
             background-size: cover !important; 
             background-position: center right !important; 
+            background-repeat: no-repeat !important;
+            background-attachment: fixed;
             height: 100vh;
         }
         .dropdown:hover .dropdown-menu { display: block; }
-        .about-photo { max-width: 380px; width: 100%; border-radius: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
-        .mother-highlight { font-size: 28px; font-weight: 700; text-align: center; color: #1e40af; margin: 1.5rem 0; }
-        .nav-logo { height: 42px; width: auto; }
-        .nav-compliance-logo { height: 28px; width: auto; }
+        .community-card { transition: all 0.3s ease; }
+        .community-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .about-photo {
+            max-width: 380px;
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+        .mother-highlight {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            color: #1e40af;
+            margin: 1.5rem 0;
+        }
+        .nav-logo { height: 42px; width: auto; object-fit: contain; }
+        .nav-compliance-logo { height: 28px; width: auto; object-fit: contain; }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -31,17 +47,21 @@
     <!-- NAVBAR -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Left: Eric Groff + NavX Realty Logo -->
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center text-2xl font-bold">EG</div>
                 <div class="flex items-center gap-3">
                     <div>
-                        <h1 class="text-2xl font-semibold">Eric Groff</h1>
+                        <h1 class="text-2xl font-semibold leading-none">Eric Groff</h1>
                         <p class="text-sm text-gray-600">NavX Realty</p>
                     </div>
-                    <img src="https://i.postimg.cc/8zNynt7P/Nav-X-Realty-4-color.jpg" alt="NavX Realty" class="nav-logo">
+                    <img src="https://i.postimg.cc/8zNynt7P/Nav-X-Realty-4-color.jpg" 
+                         alt="NavX Realty Logo" 
+                         class="nav-logo">
                 </div>
             </div>
 
+            <!-- Center: Tabs (tighter padding to fit logos) -->
             <div class="flex gap-5 text-base items-center">
                 <button onclick="switchTab(0)" class="tab-button active px-3 py-2">About</button>
                 <button onclick="switchTab(1)" class="tab-button px-3 py-2">Listings</button>
@@ -50,7 +70,9 @@
                 <button onclick="switchTab(4)" class="tab-button px-3 py-2">Reviews</button>
 
                 <div class="relative dropdown group">
-                    <button class="hover:text-blue-700 flex items-center gap-1 px-3 py-2">Resources <i class="fas fa-chevron-down text-xs"></i></button>
+                    <button class="hover:text-blue-700 flex items-center gap-1 px-3 py-2">
+                        Resources <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
                     <div class="dropdown-menu hidden absolute bg-white shadow-xl rounded-2xl py-3 w-64 mt-2 text-base z-50 border">
                         <button onclick="switchTab(5)" class="block w-full text-left px-6 py-2 hover:bg-gray-100">Blog</button>
                         <button onclick="switchTab(6)" class="block w-full text-left px-6 py-2 hover:bg-gray-100">Utility Information</button>
@@ -60,9 +82,15 @@
                 <button onclick="switchTab(7)" class="tab-button px-3 py-2">Contact</button>
             </div>
 
+            <!-- Right: REALTOR® + Equal Housing + Phone -->
             <div class="flex items-center gap-4">
-                <img src="https://i.postimg.cc/j2MTwG7p/realtor-logo-black.png" alt="REALTOR" class="nav-compliance-logo">
-                <img src="https://i.postimg.cc/W36TjDbF/equal-housing-lender-transparent-black.png" alt="Equal Housing" class="nav-compliance-logo">
+                <img src="https://i.postimg.cc/j2MTwG7p/realtor-logo-black.png" 
+                     alt="REALTOR Logo" 
+                     class="nav-compliance-logo">
+                <img src="https://i.postimg.cc/W36TjDbF/equal-housing-lender-transparent-black.png" 
+                     alt="Equal Housing Opportunity Logo" 
+                     class="nav-compliance-logo">
+
                 <a href="tel:9379033081" class="bg-blue-700 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-blue-800 whitespace-nowrap text-sm">
                     <i class="fas fa-phone"></i> (937) 903-3081
                 </a>
@@ -85,24 +113,28 @@
     </div>
 
     <!-- TAB 0: About -->
-    <div id="tab-0" class="tab-content active py-20 bg-gray-50">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="bg-white rounded-3xl shadow-xl p-10 md:p-12">
-                <div class="grid md:grid-cols-5 gap-10 items-start">
-                    <div class="md:col-span-3">
-                        <h2 class="text-4xl font-semibold mb-8">Hey there! I'm Eric Groff</h2>
-                        <div class="prose text-gray-700 leading-relaxed space-y-6 text-lg">
-                            <p>I'm the Blending Harmony Real Estate Agent! I work with people in the Miami Valley who have real estate goals. During these past 9 years, I have served many individuals, investors and families (earning referrals and repeat business) who ultimately keep my pipeline of opportunities flowing.</p>
-                            <p>Helping people fulfill their dreams is motivated by my motto of <strong>MAKE A DIFFERENCE, DAILY</strong>. When you need a Realtor who puts your interest 1st, know that I will. Whether this is your first time to purchase a home or you've been down this road before, <strong>YOUR experience matters a great deal to me</strong>.</p>
-                            <p>I have a lot of experience in DIY. I actively participate in assisting each of my Sellers with prepping their homes for market. This includes remodeling, purging their collection of treasures and just being there to provide whatever support is needed. Discover why my clients consistently refer me to their friends and family!</p>
-                            <p>I've earned the <strong>SRS (Seller Representative Specialist)</strong> and the <strong>MRP (Military Relocation Professional)</strong> Designations. I have flipped a property in 2019; personally financed, managed & executed.</p>
-                            <p>I am blessed to share 28 years of married life with my best friend and with her, I became a father of 2 very incredibly sweet, kind and talented daughters!</p>
-                            <p>When I'm not helping people achieve their real estate endeavors, I can be found weekly on Sunday mornings playing guitar in the choir at church. I also enjoy entertaining as a solo act, singing/playing guitar in restaurants, pubs and taverns. I am so grateful to share my God given talents with my community.</p>
-                            <p class="pt-8 font-medium text-blue-700">Thanks for reading my story!</p>
+    <div id="tab-0" class="tab-content active">
+        <div class="py-20 bg-gray-50">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="bg-white rounded-3xl shadow-xl p-10 md:p-12">
+                    <div class="grid md:grid-cols-5 gap-10 items-start">
+                        <div class="md:col-span-3">
+                            <h2 class="text-4xl font-semibold mb-8">Hey there! I'm Eric Groff</h2>
+                            <div class="prose text-gray-700 leading-relaxed space-y-6 text-lg">
+                                <p>I'm the Blending Harmony Real Estate Agent! I work with people in the Miami Valley who have real estate goals. During these past 9 years, I have served many individuals, investors and families (earning referrals and repeat business) who ultimately keep my pipeline of opportunities flowing.</p>
+                                <p>Helping people fulfill their dreams is motivated by my motto of <strong>MAKE A DIFFERENCE, DAILY</strong>. When you need a Realtor who puts your interest 1st, know that I will. Whether this is your first time to purchase a home or you've been down this road before, <strong>YOUR experience matters a great deal to me</strong>.</p>
+                                <p>I have a lot of experience in DIY. I actively participate in assisting each of my Sellers with prepping their homes for market. This includes remodeling, purging their collection of treasures and just being there to provide whatever support is needed. Discover why my clients consistently refer me to their friends and family!</p>
+                                <p>I've earned the <strong>SRS (Seller Representative Specialist)</strong> and the <strong>MRP (Military Relocation Professional)</strong> Designations. I have flipped a property in 2019; personally financed, managed & executed.</p>
+                                <p>I am blessed to share 28 years of married life with my best friend and with her, I became a father of 2 very incredibly sweet, kind and talented daughters!</p>
+                                <p>When I'm not helping people achieve their real estate endeavors, I can be found weekly on Sunday mornings playing guitar in the choir at church. I also enjoy entertaining as a solo act, singing/playing guitar in restaurants and bars. I am so grateful to share my God given talents with my community.</p>
+                                <p class="pt-8 font-medium text-blue-700">Thanks for reading my story!</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="md:col-span-2 flex justify-center md:justify-end">
-                        <img src="https://i.postimg.cc/FKp9cd3S/EGroffphoto.jpg" alt="Eric Groff" class="about-photo">
+                        <div class="md:col-span-2 flex justify-center md:justify-end">
+                            <img src="https://i.postimg.cc/FKp9cd3S/EGroffphoto.jpg" 
+                                 alt="Eric Groff, REALTOR" 
+                                 class="about-photo">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,15 +143,30 @@
 
     <!-- TAB 1: Listings -->
     <div id="tab-1" class="tab-content py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-semibold mb-4">Current Listings</h2>
-            <p class="text-gray-600 mb-8">I currently have properties available in the Miami Valley area.</p>
-            <div class="bg-white rounded-3xl shadow-xl p-12">
-                <div class="inline-flex gap-12 justify-center mb-10">
-                    <div class="text-center"><div class="text-6xl font-bold text-green-600">1</div><div class="uppercase text-sm">Active</div></div>
-                    <div class="text-center"><div class="text-6xl font-bold text-amber-600">3</div><div class="uppercase text-sm">Sale Pending</div></div>
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold mb-4">Current Listings</h2>
+                <p class="text-gray-600">I currently have properties available in the Miami Valley area.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-xl p-12 text-center">
+                <div class="inline-flex items-center gap-12 mb-10">
+                    <div class="text-center">
+                        <div class="text-6xl font-bold text-green-600">1</div>
+                        <div class="text-sm uppercase tracking-widest mt-2">Active</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl font-bold text-amber-600">3</div>
+                        <div class="text-sm uppercase tracking-widest mt-2">Sale Pending</div>
+                    </div>
                 </div>
-                <button onclick="switchTab(7)" class="bg-blue-700 hover:bg-blue-800 text-white px-10 py-4 rounded-3xl text-lg">Contact Me About Current Listings</button>
+                <h3 class="text-2xl font-semibold mb-6">Listings Update Quickly</h3>
+                <p class="text-gray-600 max-w-lg mx-auto mb-10">
+                    Real estate moves fast in Southwest Ohio. For the most up-to-date information, photos, pricing, and availability, please contact me directly.
+                </p>
+                <button onclick="switchTab(7)" 
+                        class="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-10 py-4 rounded-3xl text-lg flex items-center gap-3 mx-auto">
+                    <i class="fas fa-envelope"></i> Contact Me About Current Listings
+                </button>
             </div>
         </div>
     </div>
@@ -127,8 +174,11 @@
     <!-- TAB 2: Buyers -->
     <div id="tab-2" class="tab-content py-20 bg-gray-50">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Buying a Home in Southwest Ohio</h2>
-            <div class="bg-white rounded-3xl shadow-xl p-12 prose text-gray-700 leading-relaxed">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold mb-4">Buying a Home in Southwest Ohio</h2>
+                <p class="text-gray-600">Whether you're a first-time buyer or looking to move up, I'll guide you every step of the way with patience and expertise.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-xl p-12 prose text-gray-700 leading-relaxed space-y-8">
                 <h3 class="text-2xl font-semibold text-blue-700">The Home Buying Process – Step by Step</h3>
                 <ol class="list-decimal pl-6 space-y-4">
                     <li><strong>Get Pre-Approved</strong> – Know what you can afford and show sellers you're serious.</li>
@@ -138,9 +188,26 @@
                     <li><strong>Home Inspection & Appraisal</strong> – Protect your investment with thorough due diligence.</li>
                     <li><strong>Closing</strong> – I'll be with you until the keys are in your hand.</li>
                 </ol>
+
+                <h3 class="text-2xl font-semibold text-blue-700">First-Time Buyer Tips from Eric</h3>
+                <ul class="list-disc pl-6 space-y-3">
+                    <li>Take advantage of Ohio’s down payment assistance programs (many can be combined).</li>
+                    <li>Don’t rush – the right home is worth waiting for.</li>
+                    <li>Factor in future costs: taxes, insurance, maintenance, and utilities.</li>
+                    <li>I’ll help you understand your credit score and how to improve it if needed.</li>
+                    <li>Consider the “hidden” costs of homeownership – I’ll walk you through them honestly.</li>
+                </ul>
+
                 <div class="bg-blue-50 border border-blue-200 p-8 rounded-2xl mt-10">
                     <p class="font-semibold text-blue-800">Ready to start your search?</p>
-                    <p class="mt-4 text-blue-700">Beavercreek, Centerville, Dayton, Englewood, Fairborn, Germantown, Huber Heights, Jamestown, Kettering, Lebanon, Miamisburg, New Carlisle, Oakwood, Piqua, Riverside, Springboro, Tipp City, Trenton, Trotwood, Troy, Union, Vandalia, Waynesville, West Carrollton, Xenia, Yellow Springs …and YES, I will travel to Zanesville!</p>
+                    <p class="mt-3">I proudly serve homebuyers in the following Southwest Ohio communities:</p>
+                    <p class="mt-4 text-blue-700 font-medium">
+                        Beavercreek, Centerville, Dayton, Englewood, Fairborn, Germantown, Huber Heights, Jamestown, 
+                        Kettering, Lebanon, Miamisburg, New Carlisle, Oakwood, Piqua, Riverside, Springboro, 
+                        Tipp City, Trenton, Trotwood, Troy, Union, Vandalia, Waynesville, West Carrollton, 
+                        Xenia, Yellow Springs …and YES, I will travel to Zanesville!
+                    </p>
+                    <p class="mt-6">Contact me today and let’s find the perfect home for you and your family.</p>
                 </div>
             </div>
         </div>
@@ -149,8 +216,11 @@
     <!-- TAB 3: Sellers -->
     <div id="tab-3" class="tab-content py-20 bg-gray-50">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Selling Your Home with Confidence</h2>
-            <div class="bg-white rounded-3xl shadow-xl p-12 prose text-gray-700">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold mb-4">Selling Your Home with Confidence</h2>
+                <p class="text-gray-600">I’ll help you prepare, price, and market your home to attract serious buyers and maximize your return.</p>
+            </div>
+            <div class="bg-white rounded-3xl shadow-xl p-12 prose text-gray-700 leading-relaxed space-y-8">
                 <h3 class="text-2xl font-semibold text-blue-700">Why Sellers Choose Me</h3>
                 <ul class="list-disc pl-6 space-y-4">
                     <li>Hands-on help with home preparation – I have extensive DIY and remodeling experience.</li>
@@ -159,17 +229,60 @@
                     <li>Strong negotiation skills to get you the best possible offer.</li>
                     <li>Full support from listing to closing day.</li>
                 </ul>
-                <h3 class="text-2xl font-semibold text-blue-700 mt-8">Communities Where I Help Sellers Succeed</h3>
-                <div class="grid md:grid-cols-3 gap-6 mt-8">
-                    <div class="community-card bg-white border p-6 rounded-2xl">Beavercreek</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Centerville</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Dayton</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Fairborn</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Huber Heights</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Kettering</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Miamisburg</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Springboro</div>
-                    <div class="community-card bg-white border p-6 rounded-2xl">Troy</div>
+
+                <h3 class="text-2xl font-semibold text-blue-700">My Seller Checklist</h3>
+                <ul class="list-disc pl-6 space-y-3">
+                    <li>Deep clean and declutter – less is more for buyers.</li>
+                    <li>Minor repairs and fresh paint where needed.</li>
+                    <li>Professional photos and virtual tours.</li>
+                    <li>Strategic pricing to generate multiple offers when possible.</li>
+                    <li>Marketing to both local and out-of-area buyers.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-blue-700">Communities Where I Help Sellers Succeed</h3>
+                <p class="text-gray-600">I regularly assist homeowners in these popular Southwest Ohio areas:</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Beavercreek</h4>
+                        <p class="text-sm text-gray-500">Growing area near Wright-Patt with strong resale values.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Centerville</h4>
+                        <p class="text-sm text-gray-500">Mature trees, great location, and consistent buyer interest.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Dayton</h4>
+                        <p class="text-sm text-gray-500">Vibrant city living with diverse neighborhoods and strong market activity.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Fairborn</h4>
+                        <p class="text-sm text-gray-500">Convenient location with a mix of established and newer homes.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Huber Heights</h4>
+                        <p class="text-sm text-gray-500">Affordable homes with quick market turnover.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Kettering</h4>
+                        <p class="text-sm text-gray-500">Well-established neighborhoods with loyal local buyers.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Miamisburg</h4>
+                        <p class="text-sm text-gray-500">Historic charm combined with convenient modern living.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Springboro</h4>
+                        <p class="text-sm text-gray-500">Strong demand and family-oriented neighborhoods.</p>
+                    </div>
+                    <div class="community-card bg-white border border-gray-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-semibold text-lg">Troy</h4>
+                        <p class="text-sm text-gray-500">Beautiful homes and a welcoming small-town feel.</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 p-8 rounded-2xl mt-12">
+                    <p class="font-semibold text-amber-800">Thinking about selling?</p>
+                    <p class="mt-2">Let’s schedule a free, no-obligation market analysis of your home. I’ll show you what it’s worth today and how we can prepare it to sell quickly and for top dollar.</p>
                 </div>
             </div>
         </div>
@@ -178,37 +291,45 @@
     <!-- TAB 4: Reviews -->
     <div id="tab-4" class="tab-content py-20 bg-gray-50">
         <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">What My Clients Are Saying</h2>
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 bg-white px-6 py-2 rounded-full shadow mb-4">
+                    <div class="flex text-yellow-400 text-2xl">★★★★★</div>
+                    <span class="font-semibold text-xl">5.0 Average Rating</span>
+                </div>
+                <h2 class="text-4xl font-semibold mb-3">What My Clients Are Saying</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Real feedback from buyers and sellers in the Miami Valley.</p>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"Eric is a great realtor and an awesome person! My wife and I have purchased and sold properties with Eric over the past two years. He is extremely knowledgeable and patient."</p>
-                    <div class="font-medium mt-6">— Zillow Client</div>
+                    <p class="italic text-gray-700 mb-6">"Eric is a great realtor and an awesome person! My wife and I have purchased and sold properties with Eric over the past two years. He is extremely knowledgeable and patient."</p>
+                    <div class="font-medium">— Zillow Client</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"Wonderfully patient and knowledgeable realtor! Helped us find our dream home and property. Then sold our existing home in a very short time. Highly recommend!"</p>
-                    <div class="font-medium mt-6">— Zillow Client</div>
+                    <p class="italic text-gray-700 mb-6">"Wonderfully patient and knowledgeable realtor! Helped us find our dream home and property. Then sold our existing home in a very short time. Highly recommend!"</p>
+                    <div class="font-medium">— Zillow Client</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"Eric made our sale easy and we had fun working with him. I highly recommend Eric!"</p>
-                    <div class="font-medium mt-6">— Michele Webster</div>
+                    <p class="italic text-gray-700 mb-6">"Eric made our sale easy and we had fun working with him. I highly recommend Eric!"</p>
+                    <div class="font-medium">— Michele Webster</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"I used Eric as a first-time home buyer and highly recommend him for your house hunting in the Dayton area! He went above and beyond in multiple instances."</p>
-                    <div class="font-medium mt-6">— Realtor.com Client</div>
+                    <p class="italic text-gray-700 mb-6">"I used Eric as a first-time home buyer and highly recommend him for your house hunting in the Dayton area! He went above and beyond in multiple instances."</p>
+                    <div class="font-medium">— Realtor.com Client</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"Eric helped us find a house last minute. He was super great and kept us from going insane through the closing process."</p>
-                    <div class="font-medium mt-6">— Birdeye Client</div>
+                    <p class="italic text-gray-700 mb-6">"Eric helped us find a house last minute. He was super great and kept us from going insane through the closing process."</p>
+                    <div class="font-medium">— Birdeye Client</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow">
                     <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="italic">"Eric made our home selling experience a breeze. He fielded all issues in a timely manner."</p>
-                    <div class="font-medium mt-6">— Homes.com Client</div>
+                    <p class="italic text-gray-700 mb-6">"Eric made our home selling experience a breeze. He fielded all issues in a timely manner."</p>
+                    <div class="font-medium">— Homes.com Client</div>
                 </div>
             </div>
         </div>
@@ -217,41 +338,96 @@
     <!-- TAB 5: Blog -->
     <div id="tab-5" class="tab-content py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Blog & Insights</h2>
+            <h2 class="text-4xl font-semibold text-center mb-4">Blog & Insights</h2>
+            <p class="text-center text-gray-600 mb-12">Personal stories, market updates, and practical advice for Southwest Ohio homebuyers and sellers.</p>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="showBlog(1)">
+                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg" onclick="showBlog(1)">
                     <img src="https://i.postimg.cc/nrs7g1Tv/IMG-0351.avif" alt="Fixer Upper" class="w-full h-56 object-cover">
-                    <div class="p-6"><h3 class="text-xl font-semibold">Be Careful What You Wish For: My Real Fixer-Upper Journey</h3></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Be Careful What You Wish For: My Real Fixer-Upper Journey</h3>
+                        <p class="text-sm text-gray-500">Personal Story</p>
+                    </div>
                 </div>
-                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="showBlog(2)">
+                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg" onclick="showBlog(2)">
                     <img src="https://i.postimg.cc/qqkBCB67/CIMG1851.jpg" alt="Mother's Day" class="w-full h-56 object-cover">
-                    <div class="p-6"><h3 class="text-xl font-semibold">It's Almost Time to Celebrate – Honoring the Mothers in Our Lives</h3></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">It's Almost Time to Celebrate – Honoring the Mothers in Our Lives</h3>
+                        <p class="text-sm text-gray-500">Personal Reflection</p>
+                    </div>
                 </div>
-                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="showBlog(3)">
+                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg" onclick="showBlog(3)">
                     <img src="https://thumbs.dreamstime.com/b/man-hand-house-model-money-dek-196973833.jpg" alt="Buying Guide" class="w-full h-56 object-cover">
-                    <div class="p-6"><h3 class="text-xl font-semibold">Nothin’s for Free – What Do I Really Need to Buy a House?</h3></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Nothin’s for Free – What Do I Really Need to Buy a House?</h3>
+                        <p class="text-sm text-gray-500">First-Time Buyer Guide</p>
+                    </div>
                 </div>
-                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="showBlog(4)">
-                    <img src="https://bellmoving.com/wp-content/uploads/2020/07/First-Time-Homebuyer-in-Ohio.jpg" alt="First Time Buyer" class="w-full h-56 object-cover">
-                    <div class="p-6"><h3 class="text-xl font-semibold">First-Time Home Buyer Payment Assistance in Ohio – Save Thousands in 2026</h3></div>
+                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg" onclick="showBlog(4)">
+                    <img src="https://bellmoving.com/wp-content/uploads/2020/07/First-Time-Homebuyer-in-Ohio.jpg" alt="Ohio First Time Home Buyer" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">First-Time Home Buyer Payment Assistance in Ohio – Save Thousands in 2026</h3>
+                        <p class="text-sm text-gray-500">Updated Guide</p>
+                    </div>
                 </div>
-                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="showBlog(5)">
+                <div class="blog-card bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg" onclick="showBlog(5)">
                     <img src="https://i.postimg.cc/NfDDXdSY/man-is-pointing-credit-score-screen-with-button-that-says-credit-score-1-1300x867.jpg" alt="Credit Score" class="w-full h-56 object-cover">
-                    <div class="p-6"><h3 class="text-xl font-semibold">Building Your Credit Score: What You Need to Know in 2026</h3></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Building Your Credit Score: What You Need to Know in 2026</h3>
+                        <p class="text-sm text-gray-500">Practical Guide for Homebuyers</p>
+                    </div>
                 </div>
             </div>
+
             <div id="blog-full" class="mt-16 max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-10 hidden"></div>
         </div>
     </div>
 
-    <!-- TAB 6: Utility -->
+    <!-- TAB 6: Utility Information -->
     <div id="tab-6" class="tab-content py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Utility Information</h2>
+            <h2 class="text-4xl font-semibold text-center mb-4">Utility Information</h2>
+            <p class="text-center text-gray-600 mb-12">Helpful contacts for setting up utilities in the Springboro, Dayton, and Miami Valley area.</p>
+            
             <div class="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-xl">
                 <p class="font-medium mb-10 text-lg">Ohio has deregulated utility providers so, check out your options for saving $$$</p>
-                <p class="mb-10"><a href="http://www.energychoice.ohio.gov/" target="_blank" class="text-blue-700 underline">Visit Energy Choice Ohio →</a></p>
-                <!-- Full list here as per your original content -->
+                <p class="mb-10">
+                    <a href="http://www.energychoice.ohio.gov/" target="_blank" class="text-blue-700 underline hover:text-blue-800">Visit Energy Choice Ohio →</a>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-x-12 gap-y-12">
+                    <div>
+                        <h3 class="font-semibold text-xl mb-6 border-b pb-2">Electric</h3>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.aes-ohio.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">AES Ohio</a> — 800-433-8500</li>
+                            <li><a href="https://www.ohioedison.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Ohio Edison</a> — 800-633-4766</li>
+                            <li><a href="https://www.duke-energy.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Duke Energy</a> — 800-544-6900</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-xl mb-6 border-b pb-2">Gas</h3>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.centerpointenergy.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">CenterPoint Energy</a> — 800-227-1376</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-xl mb-6 border-b pb-2">Water</h3>
+                        <ul class="space-y-4">
+                            <li><a href="http://www.clarkcountyohio.gov/index.aspx?nid=168" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Clark County Utilities Dept</a> — 937-521-2150</li>
+                            <li><a href="https://www.greenecountyohio.gov/317/Sanitary-Engineering" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Greene Co Sanitary Engineering</a> — 937-562-7450</li>
+                            <li><a href="https://www.co.miami.oh.us/463/Water-Sewer" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Miami County Water and Sewer</a> — 937-440-5653</li>
+                            <li><a href="https://www.mcohio.org/264/Water-Services" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Montgomery County Water Dept</a> — 937-781-2688</li>
+                            <li><a href="http://www.co.warren.oh.us/water/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Warren County Water & Sewer</a> — 513-695-1377</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-xl mb-6 border-b pb-2">Trash / Recycling</h3>
+                        <ul class="space-y-4">
+                            <li><a href="https://www.rumpke.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Rumpke</a> — 800-223-3960</li>
+                            <li><a href="https://www.wm.com/" target="_blank" class="text-blue-700 hover:text-blue-800 font-medium">Waste Management</a> — 937-802-2517</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -259,12 +435,62 @@
     <!-- TAB 7: Contact -->
     <div id="tab-7" class="tab-content py-20 bg-white">
         <div class="max-w-2xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Let's Connect</h2>
-            <!-- Contact form here -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold mb-4">Let's Connect</h2>
+                <p class="text-gray-600">Ready to buy, sell, or just have questions? I'm here to help.</p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-3xl shadow-xl p-10">
+                <form id="contactForm">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-blue-600">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-blue-600">
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-blue-600">
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">I'm Interested In</label>
+                        <select id="interest" class="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:border-blue-600">
+                            <option value="">Select an option...</option>
+                            <option value="buying">Buying a Home</option>
+                            <option value="selling">Selling a Home</option>
+                            <option value="general">General Question</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea id="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-3xl focus:outline-none focus:border-blue-600"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="mt-8 w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-4 rounded-3xl transition flex items-center justify-center gap-2">
+                        <span id="btnText">Send Message</span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-lg font-medium">Or call me directly</p>
+                <a href="tel:9379033081" class="text-3xl font-semibold text-blue-700 hover:text-blue-800 block mt-2">(937) 903-3081</a>
+            </div>
         </div>
     </div>
 
     <script>
+        (function() {
+            emailjs.init("cDGnJpbhrxj4VYeUf");
+        })();
+
         function switchTab(tabIndex) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById('tab-' + tabIndex).classList.add('active');
@@ -273,7 +499,8 @@
             const buttons = document.querySelectorAll('.tab-button');
             if (buttons[tabIndex]) buttons[tabIndex].classList.add('active');
 
-            document.getElementById('hero-wrapper').style.display = (tabIndex === 0) ? 'flex' : 'none';
+            const hero = document.getElementById('hero-wrapper');
+            hero.style.display = (tabIndex === 0) ? 'flex' : 'none';
         }
 
         function showBlog(id) {
@@ -306,7 +533,9 @@
             } else if (id === 2) {
                 html = `<h2 class="text-3xl font-semibold mb-6">It's Almost Time to Celebrate – Honoring the Mothers in Our Lives</h2>
                 <div class="prose text-gray-700 leading-relaxed space-y-6">
-                    <p>Who brought you in this world?<br>Who helped you grow up so well?<br>Who always has your best interest at heart?</p>
+                    <p>Who brought you in this world?<br>
+                    Who helped you grow up so well?<br>
+                    Who always has your best interest at heart?</p>
                     <p class="mother-highlight">Your Mother</p>
                     <p>Have you ever wondered, "Are Mother's born knowing how to care for their children(and treat others like their family)?" I think they are. Throughout your life, can you recall if your mother or a mother who cared for you did the following?</p>
                     <ul class="list-disc pl-6 space-y-1">
@@ -332,36 +561,96 @@
                     <p>Nothin’s for free, right? What do I need to buy a house?</p>
                     <p>Humor here - Should I Sell rights to my first born? Get down on my knees and beg?</p>
                     <p>Nope but Two years on the job will help. Then you can have your credit report generated.</p>
-                    <p class="text-xl font-semibold text-center my-6">What does your credit score look like?</p>
+                    <p class="credit-question">What does your credit score look like?</p>
                     <p>Conventional loan - minimum of 620. FHA loan - minimum of 580 however, a lender may require 3-6 months of reserve above the down payment, plus a low debt to income ratio.</p>
                     <p>How is this configured?</p>
-                    <ul class="list-disc pl-6 space-y-2">
-                        <li>Payment history: This shows whether you pay your debts on time.</li>
+                    <ul class="list-disc pl-6 space-y-1">
+                        <li>Payment history: This shows whether you pay your debts on time. Creditors prefer folks who pay on time, every time.</li>
                         <li>Amount owed: This indicates how much debt you have in relation to your available credit. A good rule of thumb is to try to keep your credit use at 30% or below of your combined credit limits.</li>
                         <li>Length of credit history: This is how long you’ve had open credit accounts. Generally, the older your accounts, the better.</li>
-                        <li>Credit mix: This makes up the different types of credit you have in your name.</li>
+                        <li>Credit mix: This makes up the different types of credit you have in your name. Creditors may want to see that you can handle various types of credit well.</li>
                         <li>Recent applications for credit: Applying for credit can trigger a hard inquiry, which can lower your scores.</li>
                     </ul>
                     <p>What can you do to improve it? Refer to Building Credit Score doc.</p>
                     <p>Can I improve my kid's credit score while they are young?</p>
-                    <p>Piggybacking is when someone becomes an authorized user on another person’s credit card for the purpose of boosting their credit score...</p>
-                    <p class="text-2xl font-bold text-center my-8">HomeReady™ can help.</p>
-                    <p class="text-2xl font-bold text-center my-8">Good Neighbor Next Door</p>
+                    <p>Piggybacking is when someone becomes an authorized user on another person’s credit card for the purpose of boosting their credit score. This is not to be confused with being a joint account holder. The difference between the two is that authorized users are not legally responsible for charges made on the credit card, whereas joint account holders are.</p>
+                    <p>Nevertheless, the authorized user gets the full account history reflected on their credit report. They will get credit characteristics such as the payment history, the age of the account and the utilization rate. When these characteristics are positive, they can help to raise an authorized user’s credit score. If they are not positive, however, the authorized user risks losing points.</p>
+                    <p>That person would contact their credit card issuer and add you on as an authorized user. You could choose to get a card for the account or not.</p>
+                    <p>If you do get a card, you’ll have certain privileges. For example, Citi authorized users can make charges on the account and make payments, along with having online access, but they can’t increase the credit line or request a lower APR.</p>
+                    <p class="homeready">HomeReady™ can help.</p>
+                    <p>It’s a 3% down loan geared to help lower-income home buyers who don’t have a lot to put down. The HomeReady™ mortgage program can be used by first-time buyers and repeat buyers.</p>
+                    <p>You can use the rental income from a roommate as part of your payment towards your monthly payment. Home ownership courses are required to qualify for this program.</p>
+                    <p>You may not own any other residential property in the U.S.</p>
+                    <p class="good-neighbor">Good Neighbor Next Door</p>
+                    <p>This program offers unique benefits for nurses, first responders and teachers. If you’re eligible, you can buy HUD foreclosure homes at a 50 percent discount. Use an FHA mortgage, and you only need $100 for a down payment.</p>
+                    <p>You find the homes on HUD’s Web site, and you need a licensed real estate agent to put your offer in for you.</p>
+                    <p>If your offer is accepted, and you qualify for financing, you get the home. The 50 percent discount makes it a lot more affordable. The discount is actually a second mortgage.</p>
+                    <p>This second mortgage, though, has no interest and requires no payments. Live in the home for three years, and the second mortgage is terminated.</p>
                     <p class="font-medium">Eric Groff, REALTOR®<br>NavX Realty<br>937-903-3081</p>
                 </div>`;
             } else if (id === 4) {
                 html = `<h2 class="text-3xl font-semibold mb-6">First-Time Home Buyer Payment Assistance in Ohio – Save Thousands in 2026</h2>
                 <div class="prose text-gray-700 leading-relaxed space-y-6">
                     <p>Everyone likes the idea of saving money, right? Getting there does take effort. If you’re the go-getter type that likes hoop jumping in order to get a deal, you’re bound to love this!</p>
-                    <!-- Full text from your original DPA blog here -->
+                    <p>Table of contents:</p>
+                    <ul class="list-disc pl-6 space-y-1">
+                        <li>First Time Home Buyer Tax Credits & Down Payment Assistance in Ohio</li>
+                        <li>First Time Home Buyer Loans in Ohio</li>
+                        <li>Ohio First Time Home Buyer FAQs</li>
+                    </ul>
+                    <p>Tax credits and first time home buyer grants in Ohio can be incredibly valuable and give you thousands toward the purchase of your first home. The Ohio first time home buyer tax credit alone can save you up to $2,000 per year, every year! Here are the best programs to explore.</p>
+                    <p><strong>Ohio Mortgage Tax Credit | Ohio Housing Finance Agency</strong><br>The Mortgage Tax Credit offers long-term savings and it’s one of the best first time home buyer programs in Ohio. The program gives you a direct tax credit for a share of the mortgage interest you pay every year although the credit can’t be larger than your annual federal income tax bill after exemptions, deductions, and any other credits.</p>
+                    <p>The size of the credit depends on the property, where you buy a home, and the type of mortgage you get. Through OHFA’s First-Time Homebuyer program, for example, the tax credit with the loan is 40% of the mortgage interest you pay up to $2,000 per year. It can even be combined with 2.5% down payment assistance!</p>
+                    <p>If you use a different loan option through another lender, the tax credit is 30% (bank-owned property), 25% (target area), and 20% (all other homes).</p>
+                    <p>You may qualify if you meet income, purchase price, and credit score requirements and you have not owned a home in the last three years.</p>
+                    <p><strong>YourChoice! Down Payment Assistance | Ohio Housing Finance Agency</strong><br>When you get a mortgage through OHFA, you can qualify for down payment assistance in Ohio of 2.5% or 5% of the purchase price which can be used toward closing costs or your down payment. You don’t need to repay the grant unless you refinance or sell your home within 7 years.</p>
+                    <p>To qualify, you need to meet income, credit score, and purchase price limits. You must also complete a free homebuyer education program through a HUD-approved counseling agency in Ohio.</p>
+                    <p><strong>Ohio Grants for Grads | Ohio Housing Finance Agency</strong><br>Have you recently graduated from school and you’re ready to buy your first home? There’s a first time home buyer program in Ohio specifically for you! The Grants for Grads program offers a 30-year mortgage with a discounted mortgage rate as well as 2.5% or 5% down payment assistance. As long as you stay in Ohio, the down payment assistance is forgiven in 5 years.</p>
+                    <p>To qualify, you must be a first time home buyer in Ohio who graduated within the last 48 months with a degree from an accredited school.</p>
+                    <p><strong>Good Neighbor Next Door Program | Department of Housing and Urban Development (HUD)</strong><br>While not specifically designed for first-time buyers, the Good Neighbor Next Door program through HUD is popular with first-time homebuyers in Ohio with low to moderate income.</p>
+                    <p>This first time home buyer program in Ohio for first responders and teachers offers a 50% discount on the list price of homes in revitalization areas. Single-family homes are listed exclusively through the program for 7 days.</p>
+                    <p>Eligible careers include: Law enforcement officers, Teachers (pre-K through 12th), Firefighters, EMTs.</p>
+                    <p>The program does require a “silent” second mortgage for the discount amount with no payments or interest required as long as you live in the home for at least three years.</p>
+                    <p><strong>First Time Home Buyer Loans in Ohio</strong><br>Down payment assistance is great, but what about the mortgage itself? Here are some of the best programs available with discounted mortgage rates and looser lending standards that can help you qualify for a home loan as a first time buyer.</p>
+                    <p><strong>First-Time Home Buyer Loans | Ohio Housing Finance Agency</strong><br>The OHFA makes it easier to buy the home of your dreams as a first time homebuyer in Ohio. The agency partners with banks and credit unions to provide a first time home buyer loan in Ohio. You can qualify for a fixed-rate 30-year mortgage with purchase price limits and income guidelines designed for first-time buyers with a low or moderate income. You can qualify for a 30-year FHA, USDA, VA, or conventional loan and combine it with other OHFA programs such as down payment assistance or a mortgage tax credit.</p>
+                    <p>OHFA does not make loans; to qualify, you’ll need to apply through an OHFA-approved lender.</p>
+                    <p><strong>Ohio Heroes Loan | Ohio Housing Finance Agency</strong><br>If you’re a qualifying veteran or public servant, OHFA offers a unique first time home buyer loan in Ohio called the Heroes Loan. Not just restricted to first-time buyers, the program offers discounted mortgage rates for people in any of the following careers: Teachers, counselors, and school administrators, Police officers, EMTs, paramedics, firefighters (paid and volunteer), Veterans, active duty members, Reserve members, and surviving spouses, Physicians, RNs, LPNs, nurse practitioners, and STNAs.</p>
+                    <p><strong>Federal First-Time Buyer Home Loans</strong><br>Along with these Ohio first time home buyer programs, you may consider national loans for first-time buyers: VA loans, FHA loans, USDA loans, Home Possible from Freddie Mac, HomeReady from Fannie Mae.</p>
+                    <p><strong>Ohio First Time Home Buyer FAQs</strong><br>Are first time home buyer programs worth it? Absolutely! You can get up to 5% of the purchase price of your home in down payment assistance, a valuable tax credit, or a discounted mortgage rate as a qualifying first time buyer in Ohio.</p>
+                    <p>Do you have to pay back down payment assistance in Ohio? Not necessarily. Most first time home buyer programs in Ohio with down payment assistance require that you live in your home for a certain amount of time at which point the assistance is forgiven.</p>
+                    <p>Who is considered a first time home buyer in Ohio? With most programs, you are considered a first time home buyer if you have not owned a home in the last three years. You may also qualify as a displaced homemaker or single parent.</p>
+                    <p>As a first-time home buyer in Ohio, there are tons of resources to help you afford your first home. From down payment assistance and mortgage tax credits to low interest mortgages, you will likely find a great program you qualify for as you prepare to buy a home of your own and many can even be combined!</p>
                     <p class="font-medium">Eric Groff, REALTOR®<br>NavX Realty<br>937-903-3081</p>
                 </div>`;
             } else if (id === 5) {
-                html = `<h2 class="text-3xl font-semibold mb-6">Building Your Credit Score: What You Need to Know in 2026</h2>
-                <div class="prose text-gray-700 leading-relaxed space-y-6">
-                    <p>Experian, Equifax and TransUnion pull the Credit score. FICO scores are used in 90% of lending decisions...</p>
-                    <!-- Full credit score text -->
-                    <p class="font-medium">Eric Groff, REALTOR®<br>NavX Realty<br>937-903-3081</p>
+                html = `<h2 class="text-3xl font-semibold mb-8">Building Your Credit Score: What You Need to Know in 2026</h2>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="prose text-gray-700 leading-relaxed">
+                        <p>Experian, Equifax and TransUnion pull the Credit score. FICO scores are used in 90% of lending decisions, so those ranges are listed below, using estimates from Experian.</p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>Very poor: 300 to 579</li>
+                            <li>Fair: 580 to 669</li>
+                            <li>Good: 670 to 739</li>
+                            <li>Very good: 740 to 799</li>
+                            <li>Excellent: 800 to 850</li>
+                        </ul>
+                        <p>How are credit scores calculated?</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Payment history (35%): Whether you’ve paid past credit accounts on time</li>
+                            <li>Amounts owed (30%): The total amount of credit and loans you’re using compared to your total credit limit, also known as your utilization rate</li>
+                            <li>Length of credit history (15%): The length of time you’ve had credit</li>
+                            <li>New credit (10%): How often you apply for and open new accounts</li>
+                            <li>Credit mix (10%): The variety of credit products you have, including credit cards, installment loans, finance company accounts, mortgage loans and so on.</li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-center md:justify-end">
+                        <img src="https://phoenixbonds.finance/Portals/49/Credit%20Score%20Calculation_smaller.PNG" alt="Credit Score Calculation Chart" class="credit-graphic">
+                    </div>
+                </div>
+                <div class="prose text-gray-700 leading-relaxed mt-10">
+                    <p>Strategies: Apply for a small loan (12 months same as cash, car loan). Contact - https://credit.org/ - This has a chat box to prompt you to schedule a free consultation with a credit professional.</p>
+                    <p>Get a secured credit card, eventually graduating to an unsecured credit card. Have someone add your name to their credit card, without granting them a credit card. This works great for teenagers looking to piggyback off of parent’s good credit.</p>
+                    <p>Pay bills on time and Maintain a low utilization rate.</p>
                 </div>`;
             }
 
@@ -370,5 +659,6 @@
 
         window.onload = () => switchTab(0);
     </script>
+
 </body>
 </html>
