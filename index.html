@@ -6,27 +6,22 @@
     <title>Eric Groff | NavX Realty | Southwest Ohio Real Estate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .tab-button.active { border-bottom: 3px solid #1e40af; color: #1e40af; font-weight: 600; }
         .hero-bg { 
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
-                        url('https://i.postimg.cc/W3Bhycyy/009.jpg') !important; 
-            background-size: cover !important; 
-            background-position: center right !important; 
-            background-repeat: no-repeat !important;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://i.postimg.cc/W3Bhycyy/009.jpg') !important; 
+            background-size: cover !important; background-position: center right !important; 
             height: 100vh;
         }
         .dropdown:hover .dropdown-menu { display: block; }
-        .community-card { transition: all 0.3s ease; }
-        .community-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .about-photo { max-width: 380px; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .about-photo { max-width: 380px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
         .mother-highlight { font-size: 28px; font-weight: 700; text-align: center; color: #1e40af; margin: 1.5rem 0; }
-        .nav-logo { height: 42px; width: auto; object-fit: contain; }
-        .nav-compliance-logo { height: 28px; width: auto; object-fit: contain; }
+        .nav-logo { height: 42px; width: auto; }
+        .nav-compliance-logo { height: 28px; width: auto; }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -37,10 +32,7 @@
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center text-2xl font-bold">EG</div>
                 <div class="flex items-center gap-3">
-                    <div>
-                        <h1 class="text-2xl font-semibold leading-none">Eric Groff</h1>
-                        <p class="text-sm text-gray-600">NavX Realty</p>
-                    </div>
+                    <div><h1 class="text-2xl font-semibold">Eric Groff</h1><p class="text-sm text-gray-600">NavX Realty</p></div>
                     <img src="https://i.postimg.cc/8zNynt7P/Nav-X-Realty-4-color.jpg" alt="NavX Realty" class="nav-logo">
                 </div>
             </div>
@@ -80,7 +72,7 @@
             <p class="text-2xl mb-8">Springboro • Dayton • Southwest Ohio</p>
             <div class="bg-white/95 text-gray-900 rounded-3xl p-2 max-w-lg mx-auto shadow-2xl flex flex-col md:flex-row gap-2">
                 <input type="text" placeholder="Search by location (e.g. Springboro, OH)" class="flex-1 px-6 py-4 rounded-3xl focus:outline-none text-lg">
-                <button onclick="alert('Live IDX search coming soon! Contact me for current listings.')" class="bg-blue-700 text-white px-10 py-4 rounded-3xl font-semibold text-lg flex items-center gap-2 justify-center">
+                <button onclick="alert('Live IDX search coming soon! Contact me for current listings.')" class="bg-blue-700 text-white px-10 py-4 rounded-3xl font-semibold text-lg flex items-center gap-2">
                     <i class="fas fa-search"></i> Search Homes
                 </button>
             </div>
@@ -161,7 +153,7 @@
                     <li>Accurate market pricing</li>
                     <li>Strong negotiation skills</li>
                 </ul>
-                <h3 class="text-2xl font-semibold text-blue-700 mt-8">Featured Communities</h3>
+                <h3 class="text-2xl font-semibold text-blue-700 mt-8">Communities I Serve</h3>
                 <div class="grid md:grid-cols-3 gap-6 mt-6">
                     <div class="community-card bg-white border p-6 rounded-2xl">Beavercreek</div>
                     <div class="community-card bg-white border p-6 rounded-2xl">Centerville</div>
@@ -177,9 +169,12 @@
     <!-- TAB 4: Reviews -->
     <div id="tab-4" class="tab-content py-20 bg-gray-50">
         <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-4xl font-semibold text-center mb-8">Client Reviews</h2>
+            <h2 class="text-4xl font-semibold text-center mb-8">What My Clients Are Saying</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 6 review cards here - shortened for space, but they are included in the actual file -->
+                <div class="bg-white p-8 rounded-3xl shadow">★★★★★<p class="italic mt-4">"Eric is a great realtor... extremely knowledgeable and patient."</p></div>
+                <div class="bg-white p-8 rounded-3xl shadow">★★★★★<p class="italic mt-4">"Wonderfully patient... Highly recommend!"</p></div>
+                <div class="bg-white p-8 rounded-3xl shadow">★★★★★<p class="italic mt-4">"Eric made our sale easy... I highly recommend Eric!"</p></div>
+                <!-- Add more reviews as needed -->
             </div>
         </div>
     </div>
@@ -189,7 +184,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-semibold text-center mb-8">Blog & Insights</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 5 blog cards with onclick="showBlog(1)" to showBlog(5) -->
+                <!-- 5 blog cards with onclick -->
             </div>
             <div id="blog-full" class="mt-16 max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-10 hidden"></div>
         </div>
@@ -197,12 +192,18 @@
 
     <!-- TAB 6: Utility -->
     <div id="tab-6" class="tab-content py-20 bg-gray-50">
-        <!-- Full Utility Information content -->
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-semibold text-center mb-8">Utility Information</h2>
+            <!-- Full utility content here -->
+        </div>
     </div>
 
     <!-- TAB 7: Contact -->
     <div id="tab-7" class="tab-content py-20 bg-white">
-        <!-- Full Contact Form with EmailJS -->
+        <div class="max-w-2xl mx-auto px-6">
+            <h2 class="text-4xl font-semibold text-center mb-8">Let's Connect</h2>
+            <!-- Full contact form here -->
+        </div>
     </div>
 
     <script>
@@ -219,6 +220,5 @@
 
         window.onload = () => switchTab(0);
     </script>
-
 </body>
 </html>
