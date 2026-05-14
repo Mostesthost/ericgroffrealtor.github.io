@@ -24,20 +24,8 @@
         .dropdown:hover .dropdown-menu { display: block; }
         .community-card { transition: all 0.3s ease; }
         .community-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        .about-photo {
-            max-width: 380px;
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-        .mother-highlight {
-            font-size: 28px;
-            font-weight: 700;
-            text-align: center;
-            color: #1e40af;
-            margin: 1.5rem 0;
-        }
+        .about-photo { max-width: 380px; width: 100%; height: auto; border-radius: 16px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+        .mother-highlight { font-size: 28px; font-weight: 700; text-align: center; color: #1e40af; margin: 1.5rem 0; }
         .nav-logo { height: 42px; width: auto; object-fit: contain; }
         .nav-compliance-logo { height: 28px; width: auto; object-fit: contain; }
     </style>
@@ -54,9 +42,7 @@
                         <h1 class="text-2xl font-semibold leading-none">Eric Groff</h1>
                         <p class="text-sm text-gray-600">NavX Realty</p>
                     </div>
-                    <img src="https://i.postimg.cc/8zNynt7P/Nav-X-Realty-4-color.jpg" 
-                         alt="NavX Realty Logo" 
-                         class="nav-logo">
+                    <img src="https://i.postimg.cc/8zNynt7P/Nav-X-Realty-4-color.jpg" alt="NavX Realty" class="nav-logo">
                 </div>
             </div>
 
@@ -68,9 +54,7 @@
                 <button onclick="switchTab(4)" class="tab-button px-3 py-2">Reviews</button>
 
                 <div class="relative dropdown group">
-                    <button class="hover:text-blue-700 flex items-center gap-1 px-3 py-2">
-                        Resources <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
+                    <button class="hover:text-blue-700 flex items-center gap-1 px-3 py-2">Resources <i class="fas fa-chevron-down text-xs"></i></button>
                     <div class="dropdown-menu hidden absolute bg-white shadow-xl rounded-2xl py-3 w-64 mt-2 text-base z-50 border">
                         <button onclick="switchTab(5)" class="block w-full text-left px-6 py-2 hover:bg-gray-100">Blog</button>
                         <button onclick="switchTab(6)" class="block w-full text-left px-6 py-2 hover:bg-gray-100">Utility Information</button>
@@ -81,9 +65,8 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <img src="https://i.postimg.cc/j2MTwG7p/realtor-logo-black.png" alt="REALTOR Logo" class="nav-compliance-logo">
-                <img src="https://i.postimg.cc/W36TjDbF/equal-housing-lender-transparent-black.png" alt="Equal Housing Opportunity Logo" class="nav-compliance-logo">
-
+                <img src="https://i.postimg.cc/j2MTwG7p/realtor-logo-black.png" alt="REALTOR" class="nav-compliance-logo">
+                <img src="https://i.postimg.cc/W36TjDbF/equal-housing-lender-transparent-black.png" alt="Equal Housing" class="nav-compliance-logo">
                 <a href="tel:9379033081" class="bg-blue-700 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-blue-800 whitespace-nowrap text-sm">
                     <i class="fas fa-phone"></i> (937) 903-3081
                 </a>
@@ -105,7 +88,7 @@
         </div>
     </div>
 
-    <!-- TAB 0: About (with your requested edit) -->
+    <!-- TAB 0: About -->
     <div id="tab-0" class="tab-content active">
         <div class="py-20 bg-gray-50">
             <div class="max-w-5xl mx-auto px-6">
@@ -124,7 +107,7 @@
                             </div>
                         </div>
                         <div class="md:col-span-2 flex justify-center md:justify-end">
-                            <img src="https://i.postimg.cc/FKp9cd3S/EGroffphoto.jpg" alt="Eric Groff, REALTOR" class="about-photo">
+                            <img src="https://i.postimg.cc/FKp9cd3S/EGroffphoto.jpg" alt="Eric Groff" class="about-photo">
                         </div>
                     </div>
                 </div>
@@ -132,46 +115,7 @@
         </div>
     </div>
 
-    <!-- All other tabs (Listings, Buyers, Sellers, Reviews, Blog, Utility, Contact) are unchanged from the previous version -->
-    <!-- (For space reasons I won't repeat them here, but they are identical to the last full file I sent you) -->
-
-    <script>
-        (function() {
-            emailjs.init("cDGnJpbhrxj4VYeUf");
-        })();
-
-        function switchTab(tabIndex) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById('tab-' + tabIndex).classList.add('active');
-
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            const buttons = document.querySelectorAll('.tab-button');
-            if (buttons[tabIndex]) buttons[tabIndex].classList.add('active');
-
-            const hero = document.getElementById('hero-wrapper');
-            hero.style.display = (tabIndex === 0) ? 'flex' : 'none';
-        }
-
-        function showBlog(id) {
-            const fullDiv = document.getElementById('blog-full');
-            fullDiv.classList.remove('hidden');
-            fullDiv.scrollIntoView({ behavior: 'smooth' });
-
-            let html = '';
-            // Full blog content remains the same as previous version
-            // (I kept the exact same showBlog function as last time)
-
-            if (id === 1) { /* Fixer Upper full text */ }
-            else if (id === 2) { /* Mother's Day with enlarged "Your Mother" */ }
-            else if (id === 3) { /* Nothin’s for Free */ }
-            else if (id === 4) { /* First-Time Home Buyer */ }
-            else if (id === 5) { /* Credit Score with graphic */ }
-
-            fullDiv.innerHTML = html + `<div class="mt-10 text-center"><button onclick="document.getElementById('blog-full').classList.add('hidden')" class="px-8 py-3 bg-gray-200 hover:bg-gray-300 rounded-full text-sm font-medium">Close Article</button></div>`;
-        }
-
-        window.onload = () => switchTab(0);
-    </script>
-
-</body>
-</html>
+    <!-- TAB 1: Listings -->
+    <div id="tab-1" class="tab-content py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+           
